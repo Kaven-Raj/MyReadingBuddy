@@ -1,9 +1,6 @@
 export function request(ctx) {
-  const { ingredients = [] } = ctx.args;
-
-  // Construct the prompt with the provided ingredients
-  // const prompt = `Suggest a recipe idea using these ingredients: ${ingredients.join(", ")}.`;
-  const prompt = `You are reading buddy to help people understand books. I will give you some text from a story or a book, and you will need to extract the key points and themes from each section. For the following text, return the main points and themes from the text: ${ctx}.`;
+  console.log("Received text:", ctx);
+  const prompt = `You are reading buddy to help people get better at reading. I will give you some text from a story, book or some other piece of text, and you will need to extract the key points and themes. For the following text, return the main points and themes from the text: ${ctx}.`;
 
   // Return the request configuration
   return {
@@ -15,7 +12,7 @@ export function request(ctx) {
       },
       body: JSON.stringify({
         anthropic_version: "bedrock-2023-05-31",
-        max_tokens: 1000,
+        max_tokens: 3000,
         messages: [
           {
             role: "user",
